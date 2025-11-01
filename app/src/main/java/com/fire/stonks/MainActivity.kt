@@ -25,5 +25,7 @@ class MainActivity : ComponentActivity() {
         }
     }
 
+//Left at 24:23
+
 
 
