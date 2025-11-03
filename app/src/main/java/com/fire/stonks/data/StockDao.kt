@@ -18,14 +18,12 @@ interface StockDao {
     @Query("""
         SELECT *
         FROM companylistingentity
-        WHERE LOWER(name) LIKE '%'||LOWER(:query)||'%' OR
-        UPPER(:query)==symbol
-      
-        
-       
+        WHERE LOWER(name) LIKE '%' || LOWER(:query) || '%' OR UPPER(:query) = symbol
     """)
     suspend fun searchCompanyListing(query:String):List<CompanyListingEntity>
 
 
 
 }
+// * We use """ to write multiline string in kotlin and to use in creating complex queries in room
+//
