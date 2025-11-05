@@ -67,6 +67,7 @@ dependencies {
 
     //open csv
     implementation("com.github.dokar:kotlin-csv:1.5.0")
+    implementation("com.opencsv:opencsv:5.9")
 
     //coil
 

@@ -1,16 +1,18 @@
 package com.fire.stonks.data.repository
 
 import android.net.http.HttpException
-import androidx.collection.emptyObjectList
+import android.os.Build
+import androidx.annotation.RequiresExtension
+import com.fire.stonks.data.csv.CSVParser
 import com.fire.stonks.data.local.StockDatabase
 import com.fire.stonks.data.remote.StockApi
 import com.fire.stonks.data.toCompanyListing
+import com.fire.stonks.data.toCompanyListingEntity
 import com.fire.stonks.domain.model.CompanyListing
 import com.fire.stonks.ui.util.Resource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import java.io.IOException
-import java.io.InputStreamReader
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -18,8 +20,12 @@ import javax.inject.Singleton
 @Singleton
 class StockRepoImpl  @Inject constructor(
     val api: StockApi,
-    private val db : StockDatabase
+    private val db : StockDatabase,
+    val companyListingParser: CSVParser<CompanyListing>
+
+
 ): StockRepository{
+    @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
     override suspend fun getCompanyListings(
         fetchFromRemote: Boolean,
         query: String
@@ -40,15 +46,26 @@ class StockRepoImpl  @Inject constructor(
             val remoteListings =  try {
 
                 val response =  api.getListings()
-                response.byteStream()
-                val csvReader = (InputStreamReader(response.byteStream()))    // CVSReader((InputStreamReader(response.byteStream()))
+               companyListingParser.parse(response.byteStream())    // CVSReader((InputStreamReader(response.byteStream()))
 
             }catch (e : IOException){
                 e.printStackTrace()
                 emit(Resource.Error("   error due to IO "))
+                null
             }catch (e: HttpException){
                 e.printStackTrace()
                 emit(Resource.Error("   error due to data loading "))
+                null
+            }
+            remoteListings?.let { listings ->
+                emit(Resource.Success(
+                    data = dao.searchCompanyListing("").map { it.toCompanyListing() }
+                ))
+                emit(Resource.Loading(false))
+                dao.clearCompanyListings()
+             //  dao.insertCompanyListings(
+               //     listings.map { it.toCompanyListingEntity() }
+//                )
             }
         }
     }
