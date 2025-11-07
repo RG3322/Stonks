@@ -54,6 +54,7 @@ dependencies {
     implementation(libs.androidx.compose.ui.tooling.preview)
     implementation(libs.androidx.compose.material3)
     implementation(libs.androidx.room.common.jvm)
+    implementation(libs.androidx.navigation.safe.args.generator)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -63,34 +64,9 @@ dependencies {
     debugImplementation(libs.androidx.compose.ui.test.manifest)
     //ksp
     ksp("androidx.room:room-compiler:2.8.3")
-
-
-    //open csv
-    implementation("com.github.dokar:kotlin-csv:1.5.0")
-    implementation("com.opencsv:opencsv:5.9")
-
-    //coil
-
-    implementation("io.coil-kt:coil-compose:2.7.0")
-
-    //compose nav destinations
-    implementation("io.github.raamcosta.compose-destinations:core:2.3.0")
-    ksp("io.github.raamcosta.compose-destinations:ksp:2.3.0")
-
-   //dagger hilt
-     implementation("com.google.dagger:hilt-android:2.57.2")
-     ksp("com.google.dagger:hilt-android-compiler")
-    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
-    ksp("androidx.hilt:hilt-compiler:1.0.0")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.0-alpha01")
-
-
-    //compose dependencies
-    implementation("androidx.hilt:hilt-navigation-compose:1.0.0")
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.0-alpha01")
-    implementation("androidx.activity:activity-compose:1.7.0-alpha01")
-    implementation("com.google.accompanist:accompanist-systemuicontroller:0.28.0 ")
-
+    ksp("com.google.dagger:hilt-android-compiler:2.51.1")
+    ksp("androidx.hilt:hilt-compiler:1.2.0")
+    ksp("io.github.raamcosta.compose-destinations:ksp:2.0.0")
 
     //Retrofit
 
@@ -104,6 +80,16 @@ dependencies {
     implementation("androidx.room:room-runtime:2.6.1")
     ksp("androidx.room:room-compiler:2.6.1")
     implementation("androidx.room:room-ktx:2.6.1")
+
+
+    ksp ("io.github.raamcosta.compose-destinations:ksp:<version>")
+    implementation ("io.github.raamcosta.compose-destinations:core:<version>")
+    implementation("com.google.accompanist:accompanist-swiperefresh:<latest_version>")
+
+
+
+
+
 
 
 }
