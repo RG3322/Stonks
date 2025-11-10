@@ -1,24 +1,25 @@
 package com.fire.stonks.domain.model
 
-/**import androidx.compose.runtime.Composable
-import com.google.swiperefresh.rememberSwipeRefreshState
-import com.ramcosta.composedestinations.annotation.Destination
-import com.ramcosta.composedestinations.navigation.DestinationsNavigator
-import com.fire.stonks.presentation.company_listings.CompanyListingsViewModel
+import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.fire.stonks.presentation.company_listings.CompanyListingsEvent
 
 
-@Composable
-@Destination(start = true)
- fun CompanyListingsScreen (
-    navigator : DestinationsNavigator,
-    viewModel: CompanyListingsViewModel = hiltViewModel()
-){
-     val swipeRefreshState = rememberSwipeRefreshState(
-          isRefreshing = viewModel.state.isRefreshing
-     )
-
-
-
-}
-**/
+//@Composable
+//fun CompanyListingsScreen() {
+//    val viewModel: CompanyListingsViewModel = hiltViewModel()
+//    val state = viewModel.state
+//
+//    val swipeRefreshState = rememberSwipeRefreshState(
+//        isRefreshing = state.isRefreshing
+//    )
+//
+//    SwipeRefresh(
+//        state = swipeRefreshState,
+//        onRefresh = {
+//            viewModel.onEvent(CompanyListingsEvent.Refresh)
+//        }
+//    ) {
+//        // Your LazyColumn etc.
+//    }
+//}

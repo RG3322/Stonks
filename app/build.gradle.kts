@@ -44,6 +44,7 @@ android {
     }
 }
 
+
 dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -62,34 +63,43 @@ dependencies {
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     debugImplementation(libs.androidx.compose.ui.tooling)
     debugImplementation(libs.androidx.compose.ui.test.manifest)
-    //ksp
+
+    // ksp
     ksp("androidx.room:room-compiler:2.8.3")
     ksp("com.google.dagger:hilt-android-compiler:2.51.1")
     ksp("androidx.hilt:hilt-compiler:1.2.0")
     ksp("io.github.raamcosta.compose-destinations:ksp:2.0.0")
 
-    //Retrofit
-
+    // Retrofit
     implementation("com.squareup.retrofit2:retrofit:2.11.0")
     implementation("com.squareup.retrofit2:converter-moshi:2.11.0")
     implementation("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.14")
 
-
-    // room
-    
+    // Room
     implementation("androidx.room:room-runtime:2.6.1")
     ksp("androidx.room:room-compiler:2.6.1")
     implementation("androidx.room:room-ktx:2.6.1")
 
+    // ✅ Compose Destinations (fixed versions)
+    implementation("io.github.raamcosta.compose-destinations:core:2.0.0")
 
-    ksp ("io.github.raamcosta.compose-destinations:ksp:<version>")
-    implementation ("io.github.raamcosta.compose-destinations:core:<version>")
-    implementation("com.google.accompanist:accompanist-swiperefresh:<latest_version>")
+    // ✅ Navigation for Compose
+    implementation("androidx.navigation:navigation-compose:2.8.0")
 
+    // ✅ ViewModel for Compose
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.6")
 
+    // ✅ Replace deprecated Accompanist SwipeRefresh with new pull-to-refresh
+    // Remove this:
+    // implementation("com.google.accompanist:accompanist-swiperefresh:<latest_version>")
+    // Add this instead (official API):
+    implementation("androidx.compose.material:material-pullrefresh:1.7.5")
+    // or if you use Material3:
+    // implementation("androidx.compose.material3:material3-pulltorefresh:1.3.1")
+    implementation("androidx.compose.ui:ui-tooling:1.7.5")
 
-
-
-
+    // Dagger - Hilt
+    implementation("com.google.dagger:hilt-android:2.51.1")
+    implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
 
 }
