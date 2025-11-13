@@ -26,6 +26,7 @@ class StockRepoImpl  @Inject constructor(
 
 ): StockRepository{
     @RequiresExtension(extension = Build.VERSION_CODES.S, version = 7)
+
     override suspend fun getCompanyListings(
         fetchFromRemote: Boolean,
         query: String
@@ -51,12 +52,12 @@ class StockRepoImpl  @Inject constructor(
             }catch (e : IOException){
                 e.printStackTrace()
                 emit(Resource.Error("   error due to IO "))
-                null
-            }catch (e: HttpException){
-                e.printStackTrace()
-                emit(Resource.Error("   error due to data loading "))
-                null
-            }
+                null}
+//            }catch (e: HttpException){
+//                e.printStackTrace()
+//                emit(Resource.Error("   error due to data loading "))
+//                null
+//            }
             remoteListings?.let { listings ->
                 emit(Resource.Success(
                     data = dao.searchCompanyListing("").map { it.toCompanyListing() }

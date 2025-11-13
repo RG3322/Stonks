@@ -15,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.modifier.modifierLocalConsumer
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 //simport com.fire.stonks.presentation.company_listings.CompanyItem
 import com.fire.stonks.presentation.company_listings.CompanyListingsEvent
 import com.fire.stonks.presentation.company_listings.CompanyListingsViewmodel
@@ -39,7 +40,7 @@ import com.fire.stonks.presentation.company_listings.CompanyListingsViewmodel
 //    }
 //}
 @Composable
-fun CompanyListingsScreen(){
+fun CompanyListingsScreen(navController: NavController){
     val viewModel: CompanyListingsViewmodel = hiltViewModel()
     val state = viewModel.state
     Column(modifier = Modifier.fillMaxSize()){//this code to be added at @
