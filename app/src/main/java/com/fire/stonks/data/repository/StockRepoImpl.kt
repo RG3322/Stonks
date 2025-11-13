@@ -1,14 +1,14 @@
 package com.fire.stonks.data.repository
 
-import android.net.http.HttpException
 import android.os.Build
 import androidx.annotation.RequiresExtension
 import com.fire.stonks.data.csv.CSVParser
 import com.fire.stonks.data.local.StockDatabase
 import com.fire.stonks.data.remote.StockApi
-import com.fire.stonks.data.toCompanyListing
-import com.fire.stonks.data.toCompanyListingEntity
+import com.fire.stonks.data.mapper.toCompanyListing
+import com.fire.stonks.domain.model.CompanyInfo
 import com.fire.stonks.domain.model.CompanyListing
+import com.fire.stonks.domain.model.IntraDayInfo
 import com.fire.stonks.ui.util.Resource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -69,6 +69,14 @@ class StockRepoImpl  @Inject constructor(
 //                )
             }
         }
+    }
+
+    override suspend fun getIntraDayInfo(symbol: String): Resource<List<IntraDayInfo>> {
+        TODO("Not yet implemented")
+    }
+
+    override suspend fun getCompanyInfo(symbol: String): Resource<CompanyInfo> {
+        TODO("Not yet implemented")
     }
 
 
