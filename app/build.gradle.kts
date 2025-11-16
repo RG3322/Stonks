@@ -58,6 +58,7 @@ dependencies {
     implementation(libs.androidx.navigation.safe.args.generator)
     implementation(libs.androidx.material3)
     implementation(libs.androidx.navigation.runtime.ktx)
+    implementation(libs.androidx.room.ktx)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -103,5 +104,12 @@ dependencies {
     // Dagger - Hilt
     implementation("com.google.dagger:hilt-android:2.51.1")
     implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
+
+        implementation ("io.github.raamcosta.compose-destinations:core:1.9.53")
+        ksp("io.github.raamcosta.compose-destinations:ksp:1.9.53")
+//open csv
+    implementation("com.opencsv:opencsv:5.5.2")
+
+
 
 }
