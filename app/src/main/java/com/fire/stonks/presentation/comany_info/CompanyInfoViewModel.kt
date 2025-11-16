@@ -50,7 +50,7 @@ class CompanyInfoViewModel @Inject constructor(
             when(val result = intradayInfoResult.await()) {
                 is Resource.Success -> {
                     state = state.copy(
-                        stockInfos = result.data?.isEmpty(),
+
                         isLoading = false,
                         error = null
                     )

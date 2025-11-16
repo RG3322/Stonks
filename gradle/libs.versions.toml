@@ -1,4 +1,5 @@
 [versions]
+activityComposeVersion = "1.6.0-alpha01"
 agp = "8.13.1"
 kotlin = "2.0.21"
 coreKtx = "1.17.0"
@@ -8,6 +9,7 @@ espressoCore = "3.7.0"
 lifecycleRuntimeKtx = "2.9.4"
 activityCompose = "1.11.0"
 composeBom = "2024.09.00"
+materialPullrefresh = "1.7.5"
 xopencsv = "5.5.2"
 roomCommonJvm = "2.8.3"
 navigationSafeArgsGenerator = "2.9.6"
@@ -16,6 +18,8 @@ navigationRuntimeKtx = "2.9.6"
 roomKtx = "2.8.3"
 
 [libraries]
+androidx-activity-compose-v160alpha01 = { module = "androidx.activity:activity-compose", version.ref = "activityComposeVersion" }
+androidx-compose-material-pullrefresh = { module = "androidx.compose.material:material-pullrefresh", version.ref = "materialPullrefresh" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }

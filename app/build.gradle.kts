@@ -1,3 +1,9 @@
+import org.gradle.kotlin.dsl.androidTestImplementation
+import org.gradle.kotlin.dsl.coreLibraryDesugaring
+import org.gradle.kotlin.dsl.debugImplementation
+import org.gradle.kotlin.dsl.implementation
+import org.gradle.kotlin.dsl.testImplementation
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
@@ -96,20 +102,48 @@ dependencies {
     // Remove this:
     // implementation("com.google.accompanist:accompanist-swiperefresh:<latest_version>")
     // Add this instead (official API):
-    implementation("androidx.compose.material:material-pullrefresh:1.7.5")
+
     // or if you use Material3:
     // implementation("androidx.compose.material3:material3-pulltorefresh:1.3.1")
-    implementation("androidx.compose.ui:ui-tooling:1.7.5")
+    implementation("androidx.compose.ui:ui-tooling:1.9.4")
 
     // Dagger - Hilt
-    implementation("com.google.dagger:hilt-android:2.51.1")
-    implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
+    implementation("com.google.dagger:hilt-android:2.57.2")
+    implementation("androidx.hilt:hilt-navigation-compose:1.3.0")
 
-        implementation ("io.github.raamcosta.compose-destinations:core:1.9.53")
-        ksp("io.github.raamcosta.compose-destinations:ksp:1.9.53")
+        implementation ("io.github.raamcosta.compose-destinations:core:2.3.0")
+        ksp("io.github.raamcosta.compose-destinations:ksp:2.3.0")
 //open csv
-    implementation("com.opencsv:opencsv:5.5.2")
+    implementation("com.opencsv:opencsv:5.12.0")
 
+
+
+    // Compose dependencies
+
+    // OpenCSV
+
+
+    // Compose dependencies
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:2.9.4")
+    implementation( "androidx.compose.material:material-icons-extended:1.7.8")
+    
+    implementation ("com.google.accompanist:accompanist-swiperefresh:0.36.0")
+
+    // Compose Nav Destinations
+    implementation ("io.github.raamcosta.compose-destinations:core:2.3.0")
+    ksp ("io.github.raamcosta.compose-destinations:ksp:2.3.0")
+
+
+    // Retrofit
+    implementation ("com.squareup.retrofit2:retrofit:3.0.0")
+    implementation ("com.squareup.retrofit2:converter-moshi:3.0.0")
+    implementation( "com.squareup.okhttp3:okhttp:5.3.1")
+    implementation ("com.squareup.okhttp3:logging-interceptor:5.3.0")
+
+
+
+    // Kotlin Extensions and Coroutines support for Room
+    implementation( "androidx.room:room-ktx:2.4.2")
 
 
 }
