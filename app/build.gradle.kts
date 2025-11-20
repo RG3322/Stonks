@@ -1,32 +1,14 @@
-import org.gradle.kotlin.dsl.androidTestImplementation
-import org.gradle.kotlin.dsl.coreLibraryDesugaring
-import org.gradle.kotlin.dsl.debugImplementation
-import org.gradle.kotlin.dsl.implementation
-import org.gradle.kotlin.dsl.testImplementation
-
 plugins {
-    alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
-
-
-
-    alias(libs.plugins.kotlin.compose)
-
-
-
-
-
-
-
+    id("com.android.application")
+    id("org.jetbrains.kotlin.android")
+   // id("org.jetbrains.kotlin.plugin.compose")
+    id("com.google.dagger.hilt.android")
     id("com.google.devtools.ksp")
-
 }
 
 android {
     namespace = "com.fire.stonks"
-    compileSdk {
-        version = release(36)
-    }
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.fire.stonks"
@@ -47,113 +29,77 @@ android {
             )
         }
     }
+
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
+
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = "17"
     }
+
     buildFeatures {
         compose = true
     }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.15"
+    }
 }
 
-
 dependencies {
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.lifecycle.runtime.ktx)
-    implementation(libs.androidx.activity.compose)
-    implementation(platform(libs.androidx.compose.bom))
-    implementation(libs.androidx.compose.ui)
-    implementation(libs.androidx.compose.ui.graphics)
-    implementation(libs.androidx.compose.ui.tooling.preview)
-    implementation(libs.androidx.compose.material3)
-    implementation(libs.androidx.room.common.jvm)
-    implementation(libs.androidx.navigation.safe.args.generator)
-    implementation(libs.androidx.material3)
-    implementation(libs.androidx.navigation.runtime.ktx)
-    implementation(libs.androidx.room.ktx)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
-    androidTestImplementation(platform(libs.androidx.compose.bom))
-    androidTestImplementation(libs.androidx.compose.ui.test.junit4)
-    debugImplementation(libs.androidx.compose.ui.tooling)
-    debugImplementation(libs.androidx.compose.ui.test.manifest)
 
-    // ksp
-    ksp("androidx.room:room-compiler:2.8.3")
-    ksp("com.google.dagger:hilt-android-compiler:2.51.1")
-    ksp("androidx.hilt:hilt-compiler:1.2.0")
-    ksp("io.github.raamcosta.compose-destinations:ksp:2.0.0")
+    // AndroidX Core
+    implementation("androidx.core:core-ktx:1.13.1")
+    implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.6")
+    implementation("androidx.activity:activity-compose:1.9.2")
 
-    // Retrofit
+    // Jetpack Compose (BOM)
+    implementation(platform("androidx.compose:compose-bom:2024.10.00"))
+    implementation("androidx.compose.ui:ui")
+    implementation("androidx.compose.ui:ui-graphics")
+    implementation("androidx.compose.ui:ui-tooling-preview")
+    implementation("androidx.compose.material3:material3")
+    debugImplementation("androidx.compose.ui:ui-tooling")
+    debugImplementation("androidx.compose.ui:ui-test-manifest")
+
+    // Navigation
+    implementation("androidx.navigation:navigation-compose:2.8.0")
+
+    // ViewModel Compose
+    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.6")
+
+    // Retrofit + OkHttp
     implementation("com.squareup.retrofit2:retrofit:2.11.0")
     implementation("com.squareup.retrofit2:converter-moshi:2.11.0")
-    implementation("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.14")
+    implementation("com.squareup.okhttp3:okhttp:5.3.1")
+    implementation("com.squareup.okhttp3:logging-interceptor:5.3.1")
 
     // Room
     implementation("androidx.room:room-runtime:2.6.1")
-    ksp("androidx.room:room-compiler:2.6.1")
     implementation("androidx.room:room-ktx:2.6.1")
+    ksp("androidx.room:room-compiler:2.6.1")
 
-    // ✅ Compose Destinations (fixed versions)
-    implementation("io.github.raamcosta.compose-destinations:core:2.0.0")
-
-    // ✅ Navigation for Compose
-    implementation("androidx.navigation:navigation-compose:2.8.0")
-
-    // ✅ ViewModel for Compose
-    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.8.6")
-
-    // ✅ Replace deprecated Accompanist SwipeRefresh with new pull-to-refresh
-    // Remove this:
-    // implementation("com.google.accompanist:accompanist-swiperefresh:<latest_version>")
-    // Add this instead (official API):
-
-    // or if you use Material3:
-    // implementation("androidx.compose.material3:material3-pulltorefresh:1.3.1")
-    implementation("androidx.compose.ui:ui-tooling:1.9.4")
-
-    // Dagger - Hilt
+    // Hilt
     implementation("com.google.dagger:hilt-android:2.57.2")
-    implementation("androidx.hilt:hilt-navigation-compose:1.3.0")
+    implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
     ksp("com.google.dagger:hilt-compiler:2.57.2")
 
-        implementation ("io.github.raamcosta.compose-destinations:core:2.3.0")
-        ksp("io.github.raamcosta.compose-destinations:ksp:2.3.0")
-//open csv
-    implementation("com.opencsv:opencsv:5.12.0")
+    // Accompanist
+    implementation("com.google.accompanist:accompanist-swiperefresh:0.36.0")
 
+    // Compose Destinations
+    implementation("io.github.raamcosta.compose-destinations:core:2.3.0")
+    ksp("io.github.raamcosta.compose-destinations:ksp:2.3.0")
 
+    // CSV
+    implementation("com.opencsv:opencsv:5.9")
 
-    // Compose dependencies
-
-    // OpenCSV
-
-
-    // Compose dependencies
-    implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:2.9.4")
-    implementation( "androidx.compose.material:material-icons-extended:1.7.8")
-    
-    implementation ("com.google.accompanist:accompanist-swiperefresh:0.36.0")
-
-    // Compose Nav Destinations
-    implementation ("io.github.raamcosta.compose-destinations:core:2.3.0")
-    ksp ("io.github.raamcosta.compose-destinations:ksp:2.3.0")
-
-
-    // Retrofit
-    implementation ("com.squareup.retrofit2:retrofit:3.0.0")
-    implementation ("com.squareup.retrofit2:converter-moshi:3.0.0")
-    implementation( "com.squareup.okhttp3:okhttp:5.3.1")
-    implementation ("com.squareup.okhttp3:logging-interceptor:5.3.0")
-
-
-
-    // Kotlin Extensions and Coroutines support for Room
-    implementation( "androidx.room:room-ktx:2.4.2")
-
-
+    // Testing
+    testImplementation("junit:junit:4.13.2")
+    androidTestImplementation("androidx.test.ext:junit:1.2.1")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")
+    androidTestImplementation(platform("androidx.compose:compose-bom:2024.10.00"))
+    androidTestImplementation("androidx.compose.ui:ui-test-junit4")
 }

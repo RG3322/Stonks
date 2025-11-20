@@ -19,9 +19,12 @@ interface StockDao {
         SELECT *
         FROM companylistingentity
         WHERE LOWER(name) LIKE '%' || LOWER(:query) || '%' OR UPPER(:query) = symbol
+        
     """)
     suspend fun searchCompanyListing(query:String):List<CompanyListingEntity>
-    fun insertCompanyListings(map: kotlin.collections.List<com.fire.stonks.data.local.CompanyListingEntity>)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertCompanyListings(companyListingEntities: List<CompanyListingEntity>)
 
 
 }

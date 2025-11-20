@@ -1,22 +1,23 @@
 package com.fire.stonks.di
 
 import com.fire.stonks.data.csv.CSVParser
-import com.fire.stonks.data.csv.companyListingsParser
+import com.fire.stonks.data.csv.CompanyListingsParser
 import com.fire.stonks.data.repository.StockRepository
 import com.fire.stonks.domain.model.CompanyListing
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
 
 @Module
-@InstallIn(Singleton::class)
+@InstallIn(SingletonComponent::class)
 abstract class RepositoryModule {
     @Binds
     @Singleton
     abstract fun bindCompanyListingsParser(
-        companyListingsParser: companyListingsParser
+        companyListingsParser: CompanyListingsParser
     ): CSVParser<CompanyListing>
 
 
