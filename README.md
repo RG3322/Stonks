@@ -69,9 +69,13 @@ Hilt + Hilt Navigation Compose
 
 📂 Project Structure
 com.fire.stonks/
+
+
 │
 ├── data/
-│   ├── local/        # Room Database + DAO
+│   ├── local/     
+
+# Room Database + DAO
 │   ├── remote/       # Retrofit API
 │   ├── repository/   # Data Repository
 │
@@ -85,7 +89,7 @@ com.fire.stonks/
 
 📦 Installation
 1. Clone the Repository
-git clone https://github.com/yourusername/stonks.git
+git clone https://github.com/RG3322/stonks.git
 cd stonks
 
 2. Open in Android Studio
