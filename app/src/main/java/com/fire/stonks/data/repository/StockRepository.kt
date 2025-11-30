@@ -10,6 +10,8 @@ interface StockRepository{
 
 
     suspend fun getCompanyListings(
+
+
         fetchFromRemote: Boolean,
         query: String
     ): Flow<Resource<List<CompanyListing>>>
