@@ -72,8 +72,8 @@ dependencies {
     // Retrofit + OkHttp
     implementation("com.squareup.retrofit2:retrofit:2.11.0")
     implementation("com.squareup.retrofit2:converter-moshi:2.11.0")
-    implementation("com.squareup.okhttp3:okhttp:5.3.1")
-    implementation("com.squareup.okhttp3:logging-interceptor:5.3.1")
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")
 
     // Room
     implementation("androidx.room:room-runtime:2.6.1")
@@ -89,8 +89,8 @@ dependencies {
     implementation("com.google.accompanist:accompanist-swiperefresh:0.36.0")
 
     // Compose Destinations
-    implementation("io.github.raamcosta.compose-destinations:core:2.3.0")
-    ksp("io.github.raamcosta.compose-destinations:ksp:2.3.0")
+    implementation("io.github.raamcosta.compose-destinations:core:2.1.0")
+    ksp("io.github.raamcosta.compose-destinations:ksp:2.1.0")
 
     // CSV
     implementation("com.opencsv:opencsv:5.9")
